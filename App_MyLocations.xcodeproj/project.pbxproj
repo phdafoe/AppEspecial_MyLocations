@@ -18,6 +18,10 @@
 		637D879D1BEE278B00A4BA07 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D879C1BEE278B00A4BA07 /* HudView.swift */; settings = {ASSET_TAGS = (); }; };
 		637D87A01BEE2B0F00A4BA07 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 637D879E1BEE2B0F00A4BA07 /* Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
 		637D87A11BEE2B0F00A4BA07 /* Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 637D879F1BEE2B0F00A4BA07 /* Checkmark@3x.png */; settings = {ASSET_TAGS = (); }; };
+		637D87A41BEE4F5300A4BA07 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D87A31BEE4F5300A4BA07 /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
+		637D87A71BEE517200A4BA07 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 637D87A51BEE517200A4BA07 /* DataModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		637D87B11BEE528C00A4BA07 /* Locations+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D87AF1BEE528C00A4BA07 /* Locations+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		637D87B21BEE528C00A4BA07 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D87B01BEE528C00A4BA07 /* Locations.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,11 @@
 		637D879C1BEE278B00A4BA07 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		637D879E1BEE2B0F00A4BA07 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@2x.png"; sourceTree = "<group>"; };
 		637D879F1BEE2B0F00A4BA07 /* Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@3x.png"; sourceTree = "<group>"; };
+		637D87A31BEE4F5300A4BA07 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		637D87A61BEE517200A4BA07 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		637D87A81BEE524800A4BA07 /* App_MyLocations-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App_MyLocations-Bridging-Header.h"; sourceTree = "<group>"; };
+		637D87AF1BEE528C00A4BA07 /* Locations+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locations+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		637D87B01BEE528C00A4BA07 /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +59,11 @@
 		6304AD851BE11BE5009662E4 = {
 			isa = PBXGroup;
 			children = (
+				637D87AF1BEE528C00A4BA07 /* Locations+CoreDataProperties.swift */,
+				637D87B01BEE528C00A4BA07 /* Locations.swift */,
 				6304AD901BE11BE5009662E4 /* App_MyLocations */,
 				6304AD8F1BE11BE5009662E4 /* Products */,
+				637D87A81BEE524800A4BA07 /* App_MyLocations-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +97,8 @@
 				637D87781BED1EDA00A4BA07 /* LocationDetailsController.swift */,
 				637D87791BED1EDA00A4BA07 /* CategoryPickerTableViewController.swift */,
 				637D879C1BEE278B00A4BA07 /* HudView.swift */,
+				637D87A31BEE4F5300A4BA07 /* Functions.swift */,
+				637D87A51BEE517200A4BA07 /* DataModel.xcdatamodeld */,
 			);
 			name = CONTROLLERS;
 			sourceTree = "<group>";
@@ -124,6 +138,7 @@
 		6304AD861BE11BE5009662E4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = iCologic;
 				TargetAttributes = {
@@ -171,10 +186,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6304AD961BE11BE5009662E4 /* SecondViewController.swift in Sources */,
+				637D87A71BEE517200A4BA07 /* DataModel.xcdatamodeld in Sources */,
 				637D877A1BED1EDA00A4BA07 /* LocationDetailsController.swift in Sources */,
 				637D879D1BEE278B00A4BA07 /* HudView.swift in Sources */,
+				637D87A41BEE4F5300A4BA07 /* Functions.swift in Sources */,
 				6304AD921BE11BE5009662E4 /* AppDelegate.swift in Sources */,
+				637D87B11BEE528C00A4BA07 /* Locations+CoreDataProperties.swift in Sources */,
 				637D877B1BED1EDA00A4BA07 /* CategoryPickerTableViewController.swift in Sources */,
+				637D87B21BEE528C00A4BA07 /* Locations.swift in Sources */,
 				6304AD941BE11BE5009662E4 /* CurrentLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,10 +305,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = App_MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.icologic.App-MyLocations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "App_MyLocations-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -297,10 +319,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = App_MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.icologic.App-MyLocations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "App_MyLocations-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -326,6 +350,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		637D87A51BEE517200A4BA07 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				637D87A61BEE517200A4BA07 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 637D87A61BEE517200A4BA07 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6304AD861BE11BE5009662E4 /* Project object */;
 }

@@ -12,6 +12,10 @@ import CoreLocation
 // Importamos Dispatch GCD trabajo a bajo nivel a nivel de compilador multihilo
 import Dispatch // y nos vamos al metodo doneAction
 
+// Importamos CoreData
+import CoreData
+
+
 
 // ESTA ES UNA VARIABLE LLAMADA CLAUSURA NO ES MUY HABITUAL
 private let dateFormater: NSDateFormatter = {
@@ -32,6 +36,14 @@ class LocationDetailsController: UITableViewController {
     
     // Fase 3 desde La clase Category
     var categoryName = "No Category"
+    
+    // Fase 4 ->  CoreData ojo
+    var managedObjectContext : NSManagedObjectContext!
+    
+    // Fase 5 -> Salvando Datos dentro del CoreData
+    var date = NSDate()
+    
+    
 
     //MARK: FASE 1 -> IB
     
@@ -54,15 +66,39 @@ class LocationDetailsController: UITableViewController {
         let hudView = HudView.hudInView(navigationController!.view, animated: true)
         hudView.text = "Etiquetado"
         
+        
+        //Fase de CORE DATA SALVADO DE FICHEROS
+        // 1 -> Creamos un objeto location este es diferente pues tira de CoreData
+        
+        let location = NSEntityDescription.insertNewObjectForEntityForName("Locations", inManagedObjectContext: managedObjectContext) as! Locations
+        // 2 -> sincronizamos
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        
+        // 3
+        do{
+            try managedObjectContext.save()
+        }catch{
+            fatalError("Error: \(error)")
+        }
+        
+        
         //Fase CON DISPATCH
-        let delayInSecond = 0.6
+        /*let delayInSecond = 0.6
         let when = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSecond * Double(NSEC_PER_SEC))) // Aqui son segundos cuidado con microsegundos
         
         dispatch_after(when, dispatch_get_main_queue()) { () -> Void in
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
-        }
+        }*/ // Aqui remplazamos lo que hace la clase Function.swift
+        afterDelay(0.6, clousure:{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
   
     }
     
@@ -90,13 +126,16 @@ class LocationDetailsController: UITableViewController {
             addressLBL.text = "Direccion no encontrada"
         }
         
-        dateLBL.text = formatDate(NSDate()) // Metodo Propio
+        //dateLBL.text = formatDate(NSDate()) // Metodo Propio
+        dateLBL.text = formatDate(date) // aqui comenzamos a salvar en COREDATA
         
         
         let gestureRecognizer = UITapGestureRecognizer(target: self,
             action: "hideKeyboard:")
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
+        
+        loadCoreData()
         
         
 
@@ -228,6 +267,17 @@ class LocationDetailsController: UITableViewController {
         categoryLBL.text = categoryName
         
     }
+    
+    //MARK: - COREDATA
+    // esto mismo hay que hacerlo en la clase CurrentLocation
+    func loadCoreData(){
+        
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context: NSManagedObjectContext = appDelegate.managedObjectContext
+   
+    }
+
+    
 
 
 

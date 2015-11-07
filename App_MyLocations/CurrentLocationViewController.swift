@@ -14,6 +14,8 @@ import UIKit
 // CLLocationManagerDelegate
 import CoreLocation
 
+import CoreData
+
 // Fase 2 -> Importacion de CLLocationManagerDelegate
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -61,6 +63,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var timer: NSTimer?
     
     /*********************** FASE 13 **********************/
+    
+    // FASE DE COREDATA de aqui nos vamos al metodo segue
+    var managedObjectContext : NSManagedObjectContext!
     
     
     
@@ -682,6 +687,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 let controller = navigationController.topViewController as! LocationDetailsController
                 controller.coordinate = location!.coordinate
                 controller.placemark = placemark
+                
+                // FAse DE COE DATA de aqui nos vamos al AppDelegate
+                controller.managedObjectContext = managedObjectContext
             }
     }
 

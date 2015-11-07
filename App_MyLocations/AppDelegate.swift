@@ -7,15 +7,59 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    
+    
+    //MARK: - COREDATA
+    
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        
+        guard let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd")else{
+                
+                fatalError("No se ha encontrado el modelo de datos dentro de la carpeta de la App")
+        }
+        
+        
+        guard let model = NSManagedObjectModel(contentsOfURL: modelURL)else{
+                fatalError("Error al inicializar el modelo desde :\(modelURL)")
+        }
+        
+        
+        let urls = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory,
+            inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let documentsDirectory = urls[0]
+        let storeURL = documentsDirectory.URLByAppendingPathComponent("DataStore.sqlite")
+        
+        do{
+            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+            let context = NSManagedObjectContext(concurrencyType:NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+            context.persistentStoreCoordinator = coordinator
+            return context
+            
+        }catch{
+            
+            fatalError("Error al añadir persistencia a la tienda de \(storeURL) : \(error)")
+        }
+        
+        }() // DE AQUI NOS VAMOS A LOCATION DETAIL VIEW CONTROLLER
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // FASE DE COREDATA EN LA VISTA DE CURRENT LOCATION
+        let tabBarController = window!.rootViewController as! UITabBarController
+        if let tabBarController = tabBarController.viewControllers{
+            let currentLocationViewController = tabBarController[0] as! CurrentLocationViewController
+            currentLocationViewController.managedObjectContext = managedObjectContext
+        }
         return true
     }
 
@@ -40,6 +84,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 }
